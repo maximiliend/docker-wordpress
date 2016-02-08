@@ -8,7 +8,7 @@ A enhanced docker image of WordPress with PHP7 & Security Tools. Based on Offici
 
 ### Advice
 
-The official wordpress Image use a volume for /var/www/html.
+The official wordpress Image use a volume for /var/www/html. We keep it for wp-config.php, because if you want edit this one you will have to mount it with -v /path/to/wp-config.php:/var/www/html/wp-config.php and sometimes you can see a similar error "./sedKdJ9Dy: Device or resource busy" because of an inode change.
 
 We recommend you to use volume for wordpress but only for /var/www/html/wp-content. So you only keep uploaded files, themes and plugins. You are not supposed to change the wordpress core.
 Simply choose what you want to do by using -v option.

@@ -19,12 +19,14 @@ RUN { \
     } > /usr/local/etc/php/conf.d/opcache-recommended.ini
 
 RUN { \
-            echo 'file_uploads=On'; \
-            echo 'memory_limit=128M'; \
-            echo 'upload_max_filesize=24M'; \
-            echo 'post_max_size=24M'; \
-            echo 'max_execution_time=600'; \
+        echo 'file_uploads=On'; \
+        echo 'memory_limit=128M'; \
+        echo 'upload_max_filesize=24M'; \
+        echo 'post_max_size=24M'; \
+        echo 'max_execution_time=600'; \
     } > /usr/local/etc/php/conf.d/uploads.ini
+
+VOLUME /var/www/html
 
 ENV WORDPRESS_VERSION 4.4.2
 ENV WORDPRESS_SHA1 7444099fec298b599eb026e83227462bcdf312a6

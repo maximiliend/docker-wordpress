@@ -13,10 +13,10 @@ RewriteRule ^(/)?wp-admin-panel/?$ /wp-login.php [QSA,L]
         Order allow,deny
         Deny from all
 </files>
-<files install.php>
-        Order allow,deny
-        Deny from all
-</files>
+#<files install.php>
+#        Order allow,deny
+#        Deny from all
+#</files>
 <files wp-config.php>
         Order allow,deny
         Deny from all
