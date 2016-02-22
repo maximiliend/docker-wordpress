@@ -38,10 +38,7 @@ RUN curl -o wordpress.tar.gz -SL https://wordpress.org/wordpress-${WORDPRESS_VER
     && rm wordpress.tar.gz \
     && chown -R www-data:www-data /usr/src/wordpress
 
-COPY anti_bot_hacker_htaccess /anti_bot_hacker_htaccess
-COPY bad_bot_htaccess /bad_bot_htaccess
-COPY secure_wp_htaccess /secure_wp_htaccess
-COPY wp_config_custom /wp_config_custom
+COPY custom_import/* /
 COPY docker-entrypoint.sh /entrypoint.sh
 
 # grr, ENTRYPOINT resets CMD now
