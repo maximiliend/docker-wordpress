@@ -109,6 +109,33 @@ EOPHP
 	set_config 'DB_PASSWORD' "$WORDPRESS_DB_PASSWORD"
 	set_config 'DB_NAME' "$WORDPRESS_DB_NAME"
 
+    # Custom
+
+    # Insert new options
+
+    if ! grep -q '# Custom maximiliend/wordpress configuration' wp-config.php
+    then
+        insertline=$(grep -n "^define('WP_DEBUG'," wp-config.php | cut -d ':' -f 1)
+        sed -i "$insertline r /wp_config_custom" wp-config.php
+    fi
+
+    # Update new options
+
+    if [ -z "$WORDPRESS_POST_REVISIONS" ]; then
+        WORDPRESS_POST_REVISIONS=5
+    fi
+    set_config 'WP_POST_REVISIONS' "$WORDPRESS_POST_REVISIONS"
+
+    if [ -z "$WORDPRESS_EMPTY_TRASH_DAYS" ]; then
+        WORDPRESS_EMPTY_TRASH_DAYS=7
+    fi
+    set_config 'EMPTY_TRASH_DAYS' "$WORDPRESS_EMPTY_TRASH_DAYS"
+
+    if [ -z "$WORDPRESS_FORCE_SSL_ADMIN" ]; then
+        WORDPRESS_FORCE_SSL_ADMIN='false'
+    fi
+    set_config 'FORCE_SSL_ADMIN' "$WORDPRESS_FORCE_SSL_ADMIN"
+
 	# allow any of these "Authentication Unique Keys and Salts." to be specified via
 	# environment variables with a "WORDPRESS_" prefix (ie, "WORDPRESS_AUTH_KEY")
 	UNIQUES=(
