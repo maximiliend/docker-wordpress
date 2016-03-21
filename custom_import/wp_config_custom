@@ -2,4 +2,3 @@
 # Custom maximiliend/wordpress configuration
 define('WP_POST_REVISIONS', 5);
 define('EMPTY_TRASH_DAYS', 7);
-define('FORCE_SSL_ADMIN', false);
