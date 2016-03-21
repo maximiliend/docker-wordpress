@@ -1,5 +1,14 @@
 # Rules to hide the dashboard
-RewriteRule ^(/)?wp-admin-panel/?$ /wp-login.php [QSA,L]
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond  %{REQUEST_URI}  ^/wp-admin-panel$
+RewriteRule .* wp-login.php
+
+RewriteCond %{REQUEST_URI} /wp-login.php
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteRule .* - [F,L]
+</IfModule>
+
 # Rules to block access to WordPress specific files
 <files .htaccess>
         Order allow,deny
