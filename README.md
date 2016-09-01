@@ -4,7 +4,7 @@ A enhanced docker image of WordPress with PHP7 & Security Tools. Based on Offici
 
 ### Wordpress Version
 
-4.5
+4.6
 
 ### Advice
 
