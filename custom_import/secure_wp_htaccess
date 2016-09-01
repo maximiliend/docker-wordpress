@@ -5,7 +5,10 @@ RewriteCond  %{REQUEST_URI}  ^/wp-admin-panel$
 RewriteRule .* wp-login.php
 
 RewriteCond %{REQUEST_URI} /wp-login.php
+RewriteCond %{HTTP_REFERER} !/wp-admin-panel$
 RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteCond %{QUERY_STRING} !^action=logout
+RewriteCond %{QUERY_STRING} !^loggedout=true
 RewriteRule .* - [F,L]
 </IfModule>
 
